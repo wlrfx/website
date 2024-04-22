@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://unpkg.com">
+    <script src="https://unpkg.com/typeit@8.8.3/dist/index.umd.js"></script>
+    <style>
+      body {
+        background: #161616;
+        color: #f4f4f4;
+        margin: 0;
+        font-family: "IBM Plex Mono", monospace;
+        font-weight: 400;
+      }
+      .header {
+        position: fixed;
+        width: 100%;
+      }
+      .header .start {
+        float: left;
+        width: 49%;
+
+      }
+      .header .start img {
+        margin: 6.6%;
+        width: 26%;
+        border-radius: 12%;
+        backdrop-filter: blur(10px);
+        box-shadow: #000 0px 0px;
+      }
+      .header .end {
+        float: right;
+        width: 49%;
+        padding: 1.3% 0;
+      }
+      .header .end a {
+        float: right;
+        padding: 2.3%;
+        width: 5%;
+        vertical-align: middle;
+        position: relative;
+      }
+      .header .end a img {
+        max-height: 100%;
+        max-width: 100%; 
+        margin: auto;
+      }
+
+      .page {}
+      .page .hook {
+        max-width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .page .hook h1 {
+        font-size: 48px;
+        text-align: center;
+        margin: 16px%;
+      }
+      .page hr {
+        width: 20%;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .page .swayfx {}
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="start">
+        <img src="svg/fx.svg" />
+      </div>
+      <div class="end">
+        <a href="/docs"><img src="svg/documentation.svg" /></a>
+        <a href="https://github.com/wlrfx/scenefx"><img src="svg/github.svg" /></a>
+        <a href="https://discord.gg/fzMeDBMhqQ"><img src="svg/discord.svg" /></a>
+      </div>
+    </div>
+    <div class="page">
+      <img src="svg/qbars.svg" width="75%" />
+      <div class="hook">
+        <h1>Wayland FX for <span id="typed"></span></h1>
+      </div>
+      <br><hr><br>
+      <div class="left-container swayfx">
+        <img src="" />
+        <p></p>
+      </div>
+      <div class="right-container dwl">
+        <img src="" />
+        <p></p>
+      </div>
+    </div>
+  </body>
+  <script>
+    const words = [ "everyone", "sway", "dwl", "... !" ];
+    const typed = new TypeIt("#typed", { lifeLike: true, speed: 150 }).go();
+    let i = 0; const next = () => {
+      const word = words[i++];
+      if (i == words.length) i = 0;
+      typed.type(word)
+        .pause(3000)
+        .delete(word.length)
+        .pause(150)
+        .flush(next);
+    }; next();
+  </script>
+</html>
